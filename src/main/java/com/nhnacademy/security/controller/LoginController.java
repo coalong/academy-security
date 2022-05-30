@@ -24,36 +24,5 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public
-
 }
 
-//    @GetMapping(value = {"/", "/login"})
-//    public String login(@ModelAttribute("user")  String userId) {
-//        if (Objects.isNull(userId)) {
-//            // 로그인 안되있으면 loginForm
-//            return "index/loginForm";
-//        } else {
-//            return "index/home";
-//        }
-//    }
-//
-//
-//    @PostMapping("/login")
-//    public String doLogin(@RequestParam("id") String id,
-//                          @RequestParam("pwd") String pwd,
-//                          HttpServletRequest request,
-//                          ModelMap modelMap) {
-//        if (userService.matches(id, pwd)) {
-//            //성공시
-//            HttpSession session = request.getSession();
-//            session.setAttribute("id", id);
-//
-//            modelMap.put("id", session.getAttribute("id"));
-//            return "index/loginSuccess";
-//        } else {
-//            //실패시
-//            return "redirect:/login";
-//        }
-//    }
