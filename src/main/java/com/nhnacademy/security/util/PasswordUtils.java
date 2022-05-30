@@ -39,6 +39,7 @@ public class PasswordUtils {
         return bytesToHex(digest);
     }
 
+    // Salt와 iteration 같이 하는 메소드
     private static byte[] sha256(String rawPassword, byte[] salt, int iterations) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         digest.reset();
@@ -49,7 +50,6 @@ public class PasswordUtils {
             digest.reset();
             input = digest.digest(input);
         }
-
         return input;
     }
 
