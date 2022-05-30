@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AndRequestMatcher;
 
 @EnableWebSecurity(debug = true)
 @Configuration
@@ -26,7 +27,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
             .sessionManagement()
                 .sessionFixation()
-                    .none();
+                    .none()
+                .and()
+                .headers()
+                .defaultsDisabled()
+                .httpStrictTransportSecurity()
+                .requestMatcher(new AndRequestMatcher())
+                .maxAgeInSeconds(31536000)
+                .includeSubDomains(true)
+                .and()
+                .and()
+                .requiresChannel()
+                .antMatchers("/admin/**").requiresSecure();
     }
 
     @Override
